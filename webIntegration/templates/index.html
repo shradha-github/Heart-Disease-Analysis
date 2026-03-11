@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Heart Disease Analysis System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+<h1>❤️ Heart Disease Analysis</h1>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#statistics">Statistics</a>
+<a href="#analysis">Analysis</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#prevention">Prevention</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+    <section id="home">
+        <h2>Heart Disease Analysis </h2>
+    <p>
+        Heart disease is one of the leading causes of death worldwide and 
+        its cases are increasing due to unhealthy lifestyles, poor diet, stress, 
+        and lack of physical activity. Early identification of risk factors can
+        significantly help in preventing severe heart conditions.
+        This Heart Disease Analysis System uses data analytics and visualization
+        techniques to study important health indicators such as age, blood pressure,
+         cholesterol level, and heart rate. By analyzing these medical factors, 
+         the system provides insights that help users understand their potential risk level.
+        The project integrates interactive data visualization using Tableau 
+        dashboards to explore heart disease trends and patterns. 
+        These visual insights help healthcare professionals, researchers, and
+         individuals better understand risk factors and take preventive actions for maintaining heart health.
+        </p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Heart Disease</h2>
+<p>
+    Heart disease refers to a group of conditions that affect the heart and blood vessels, including coronary artery disease, heart attack, and heart failure. Many of these conditions develop gradually and are strongly influenced by lifestyle factors such as smoking, poor diet, high cholesterol, obesity, and lack of exercise.
+    
+    The purpose of this project is to analyze heart disease data and present meaningful insights using data visualization tools. By transforming raw healthcare data into interactive dashboards, it becomes easier to understand patterns, identify high-risk groups, and highlight the major factors contributing to heart disease.
+    
+    Using Tableau dashboards, the system visually represents medical indicators such as age distribution, cholesterol levels, blood pressure patterns, and other risk factors. These insights help support better health awareness, preventive strategies, and data-driven decision making for individuals and healthcare professionals.
+    </p>
+</section>
+
+<!-- STATISTICS -->
+<section id="statistics">
+<h2>📊 Global Heart Disease Statistics</h2>
+
+<div class="stats-container">
+
+<div class="stat-box">
+<h3 class="counter" data-target="17900000">0</h3>
+<p>Deaths per Year Worldwide</p>
+</div>
+
+<div class="stat-box">
+<h3 class="counter" data-target="32">0</h3>
+<p>% Global Deaths</p>
+</div>
+
+<div class="stat-box">
+<h3 class="counter" data-target="240">0</h3>
+<p>Risk Cholesterol Level</p>
+</div>
+
+<div class="stat-box">
+<h3 class="counter" data-target="10000">0</h3>
+<p>Analyzed Health Records</p>
+</div>
+
+</div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis">
+<h2>Heart Risk Analysis</h2>
+
+<form action="/analyze" method="post">
+<label>Age</label>
+<input type="number" name="age" required>
+
+<label>Blood Pressure</label>
+<input type="number" name="bp" required>
+
+<label>Cholesterol Level</label>
+<input type="number" name="cholesterol" required>
+
+<label>Heart Rate</label>
+<input type="number" name="heart_rate" required>
+
+<button type="submit">Analyze</button>
+</form>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+<h2>📊 Heart Disease Tableau Dashboard</h2>
+
+<!-- Tableau iframe -->
+<iframe 
+    src="https://public.tableau.com/views/no_ofscenestory/Dashboard5?:embed=y&:showVizHome=no" 
+    width="100%" height="600" style="border:none;" 
+    onerror="document.getElementById('carousel-container').style.display='block'; this.style.display='none';">
+</iframe>
+
+<p>If the dashboard does not load, click the link below to view it:</p>
+<a href="https://public.tableau.com/views/no_ofscenestory/Dashboard5" target="_blank" class="tableau-link">Open Tableau Dashboard</a>
+
+<!-- Carousel Fallback -->
+<div id="carousel-container" class="carousel" style="display:none;">
+  <div class="carousel-inner">
+    <img src="{{ url_for('static', filename='dashboard1.png') }}" alt="Dashboard 1">
+    <img src="{{ url_for('static', filename='dashboard2.png') }}" alt="Dashboard 2">
+    <img src="{{ url_for('static', filename='dashboard3.png') }}" alt="Dashboard 3">
+  </div>
+  <button class="prev" onclick="slide(-1)">❮</button>
+  <button class="next" onclick="slide(1)">❯</button>
+</div>
+
+<p>If the interactive dashboard doesn’t load, use the arrows to view the snapshots.</p>
+</section>
+
+<!-- PREVENTION -->
+<section id="prevention">
+<h2>Heart Disease Prevention</h2>
+<ul>
+<li>Exercise regularly</li>
+<li>Eat healthy food</li>
+<li>Avoid smoking</li>
+<li>Maintain healthy weight</li>
+<li>Reduce stress</li>
+</ul>
+</section>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-content">
+    <h3>Heart Disease Analysis Project</h3>
+    <p>Developed using Flask + Tableau</p>
+
+    <div class="team-section">
+      <h4>Meet the Team</h4>
+      <div class="team-container">
+        
+        <div class="team-member">
+         
+          <h5>Shraddha Lande -Team Lead</h5>
+          </div>
+
+        <div class="team-member">
+       
+          <h5>Srushti Patil -Team Member</h5>
+          
+        </div>
+
+        <div class="team-member">
+      
+          <h5>Shweta Mali -Team Member</h5>
+        
+        </div>
+         <div class="team-member">
+          <h5>Shrutika Mane -Team Member</h5>
+          
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 HeartCare Analyzer. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+/* Carousel JS */
+let currentIndex = 0;
+function slide(direction) {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const totalImages = carouselInner.children.length;
+    
+    currentIndex += direction;
+    if(currentIndex < 0) currentIndex = totalImages - 1;
+    if(currentIndex >= totalImages) currentIndex = 0;
+
+    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+</script>
+
+</body>
+</html>
